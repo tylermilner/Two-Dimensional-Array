@@ -3,7 +3,6 @@ Two-Dimensional-Array
 
 A simple 2D Array written in Objective-C. You can include the source files directly or use CocoaPods to bring this into your project.
 
--- USAGE --
 Initialization is easy:
 
 TJMTwoDimensionalArray *array = [[TJMTwoDimensionalArray alloc] initWithNumberOfRows:4 numberOfColumns:4];
