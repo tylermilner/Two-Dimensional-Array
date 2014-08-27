@@ -6,6 +6,8 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/Cubd/Two-Dimensional-Array"
   s.license      = { :type => "MIT", :file => "license.txt" }
   s.author             = { "Tyler Milner" => "tyler@tylermilner.com" }
+  s.ios.deployment_target = "5.0"
+  s.osx.deployment_target = "10.7"
   s.platform     = :ios
   s.source       = { :git => "https://github.com/Cubd/Two-Dimensional-Array.git", :tag => "1.0.0" }
   s.source_files  = "Source"
