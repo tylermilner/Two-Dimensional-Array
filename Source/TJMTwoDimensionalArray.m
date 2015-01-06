@@ -8,6 +8,10 @@
 
 #import "TJMTwoDimensionalArray.h"
 
+#define kNSCodingArrayKey @"array"
+#define kNSCodingNumberOfRowsKey @"numberOfRows"
+#define kNSCodingNumberOfColumnsKey @"numberOfColumns"
+
 @interface TJMTwoDimensionalArray()
 
 @property (strong, nonatomic) NSMutableArray *array;
@@ -51,11 +55,43 @@
     return self;
 }
 
+- (instancetype)initWithNumberOfRows:(NSUInteger)numberOfRows numberOfColumns:(NSUInteger)numberOfColumns array:(NSMutableArray *)array
+{
+    self = [super init];
+    
+    if (self)
+    {
+        _numberOfRows = numberOfRows;
+        _numberOfColumns = numberOfColumns;
+        _array = array;
+    }
+    
+    return self;
+}
+
 - (void)twoDimensionalArrayCommonInit
 {
     _array = [@[] mutableCopy];
     
     [self fillTwoDimensionalArray:_array withNullObjectsForNumberOfRows:_numberOfRows numberOfColumns:_numberOfColumns];
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.array forKey:kNSCodingArrayKey];
+    [aCoder encodeInteger:self.numberOfRows forKey:kNSCodingNumberOfRowsKey];
+    [aCoder encodeInteger:self.numberOfColumns forKey:kNSCodingNumberOfColumnsKey];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    NSMutableArray *array = [aDecoder decodeObjectForKey:kNSCodingArrayKey];
+    NSUInteger numberOfRows = [aDecoder decodeIntegerForKey:kNSCodingNumberOfRowsKey];
+    NSUInteger numberOfColumns = [aDecoder decodeIntegerForKey:kNSCodingNumberOfColumnsKey];
+    
+    return [self initWithNumberOfRows:numberOfRows numberOfColumns:numberOfColumns array:array];
 }
 
 #pragma mark - Properties

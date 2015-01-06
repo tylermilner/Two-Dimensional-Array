@@ -13,7 +13,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TJMTwoDimensionalArray : NSObject
+@interface TJMTwoDimensionalArray : NSObject <NSCoding>
 
 + (id)nullObject;
 
